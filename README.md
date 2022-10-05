@@ -1,2 +1,2 @@
 # Decifre
-<img src="Tela inicial.PNG">
+<img src="imagens/Tela inicial.PNG">
