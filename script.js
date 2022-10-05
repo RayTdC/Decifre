@@ -1,10 +1,9 @@
-/* Mostrar a parte de incremento da Cifra */
-var escolhas = document.querySelector("select");
+let escolhas = document.querySelector("select");
 
 escolhas.addEventListener("change", function (evento) {
   evento.preventDefault();
 
-  var incremento = document.getElementById("valorIncremento");
+  let incremento = document.getElementById("valorIncremento");
 
   if (evento.target.value == "cCesar") {
     incremento.style = "display: flex";
@@ -13,14 +12,13 @@ escolhas.addEventListener("change", function (evento) {
   }
 });
 
-/* botão muda o texto e também a cor da pág */
-var btn = document.querySelectorAll('input[name="codific"]');
+let btn = document.querySelectorAll('input[name="codific"]');
 
 btn.forEach((radio) => {
   radio.addEventListener("change", function (evento) {
     evento.preventDefault();
 
-    var botao = document.getElementById("submit");
+    let botao = document.getElementById("submit");
 
     if (evento.target.value == "decodificar") {
       botao.innerHTML = "Decodificar mensagem";
@@ -32,17 +30,16 @@ btn.forEach((radio) => {
   });
 });
 
-/* CRIPTOGRAFIAS */
-var formulario = document.forms.formulario;
+let formulario = document.forms.formulario;
 
 formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
 
-  var texto = formulario.texto.value;
-  var escolha = formulario.escolherCod.value;
-  var botoes = formulario.codific.value;
-  var numeroIncremento = formulario.numeroIncrementos.value;
-  var mensagemFinal = "";
+  let texto = formulario.texto.value;
+  let escolha = formulario.escolherCod.value;
+  let botoes = formulario.codific.value;
+  let numeroIncremento = formulario.numeroIncrementos.value;
+  let mensagemFinal = "";
 
   if (escolha == "cCesar") {
     mensagemFinal = cesar(botoes, texto, numeroIncremento);
@@ -50,19 +47,18 @@ formulario.addEventListener("submit", function (evento) {
     mensagemFinal = base64(botoes, texto);
   }
 
-  var resultadoTexto = document.getElementById("saidaTexto");
+  let resultadoTexto = document.getElementById("saidaTexto");
   resultadoTexto.innerHTML = `${mensagemFinal}`;
 });
 
-/* Cifra */
 function cesar(codific, texto, numeroIncremento) {
   numeroIncremento = Number(numeroIncremento);
 
-  var mensagemFinal = "";
+  let mensagemFinal = "";
 
-  for (var i = 0; i < texto.length; i++) {
-    var letra = texto[i];
-    var codigo = letra.charCodeAt();
+  for (let i = 0; i < texto.length; i++) {
+    let letra = texto[i];
+    let codigo = letra.charCodeAt();
 
     if (codific == "codificar") {
       codigo += numeroIncremento;
@@ -74,7 +70,6 @@ function cesar(codific, texto, numeroIncremento) {
   return mensagemFinal;
 }
 
-/* Base */
 function base64(codific, texto) {
   if (codific == "codificar") {
     return btoa(texto);
